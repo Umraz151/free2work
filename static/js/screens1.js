@@ -1,12 +1,13 @@
 'use strict';
 /* ---------- registration ---------- */
-const REG={name:'',age:'',qual:'',phone:'',mode:'customer',error:''};
+const REG={name:'Demo User',age:'20',qual:'',phone:'60000'+String(Math.floor(Math.random()*100000)).padStart(5,'0'),mode:'customer',error:''};
 SCREENS.register=async()=>({fab:false,html:`
 <div class="scroll" style="padding:0">
  <div class="hero-auth"><img src="/static/icon.svg" alt=""><h1>Welcome to Free2Work</h1><p>Book trusted help at home, or find work near you.</p></div>
  <div class="card sheet-card" style="padding:18px">
+  <div style="background:#FFF4D6;border:1px solid #E8C766;color:#5A4300;border-radius:10px;padding:10px 12px;margin-bottom:12px;font-size:13px;line-height:1.4"><b>DEMO</b> - don't enter real personal details. Sample entries are filled in for you, just tap Get OTP.</div>
   <div id="regerr"></div>
-  <div class="fld"><label>Full name</label><input class="inp" id="rn" placeholder="e.g. Mohammed Umraz" value="${esc(REG.name)}" autocomplete="name"></div>
+  <div class="fld"><label>Full name</label><input class="inp" id="rn" placeholder="e.g. Demo User" value="${esc(REG.name)}" autocomplete="name"></div>
   <div class="row2"><div class="fld"><label>Age</label><input class="inp" id="ra" type="number" inputmode="numeric" placeholder="18" value="${esc(REG.age)}"></div>
   <div class="fld"><label>Qualification</label><select class="inp" id="rq"><option value="">Select</option>${S.quals.map(q=>`<option ${REG.qual===q?'selected':''}>${q}</option>`).join('')}</select></div></div>
   <div class="fld"><label>Mobile number</label><div class="phone"><span>+91</span><input id="rp" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit number" value="${esc(REG.phone)}"></div></div>
@@ -19,6 +20,7 @@ SCREENS.register=async()=>({fab:false,html:`
  <div style="height:24px"></div>
 </div>`,after(){
   document.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{REG.mode=b.dataset.mode;document.querySelectorAll('[data-mode]').forEach(x=>x.classList.toggle('on',x===b))});
+  const rq=$('#rq');if(!REG.qual&&rq&&rq.options.length>1){rq.selectedIndex=1;REG.qual=rq.value}
   const go=$('#rgo');
   go.onclick=async()=>{
     REG.name=$('#rn').value.trim();REG.age=$('#ra').value;REG.qual=$('#rq').value;REG.phone=$('#rp').value.replace(/\D/g,'');
