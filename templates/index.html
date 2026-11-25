@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1">
+<meta name="theme-color" content="#0B1B3A"><meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Free2Work">
+<link rel="manifest" href="/manifest.webmanifest"><link rel="icon" href="/static/icon.svg">
+<link rel="apple-touch-icon" href="/static/icon.svg">
+<title>Free2Work</title>
+<link rel="stylesheet" href="/static/vendor/leaflet.css">
+<link rel="stylesheet" href="/static/css/app.css">
+</head><body>
+<div id="app"><div id="screen"><div class="splash" id="splash"><img src="/static/icon.svg" alt=""><h2 style="margin:0">Free2Work</h2><p style="opacity:.7;margin:6px 0 0">Loading...</p></div></div><div id="tabbar-host"></div></div>
+<script>window.addEventListener('error',function(e){var s=document.getElementById('splash');if(s)s.innerHTML='<h3>Something went wrong</h3><p style="font-size:13px;word-break:break-word">'+(e.message||'error')+'<br>'+(e.filename||'')+':'+(e.lineno||'')+'</p>'});</script>
+<script src="/static/vendor/leaflet.js"></script>
+<script src="/static/js/core.js"></script>
+<script src="/static/js/screens1.js"></script>
+<script src="/static/js/screens2.js"></script>
+<script src="/static/js/screens3.js"></script>
+<script>boot()</script>
+</body></html>
